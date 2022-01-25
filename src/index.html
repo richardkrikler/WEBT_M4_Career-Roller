@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career-Roller</title>
+    <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+
+<div>
+    <button type="button" id="randomBt" class="bg-amber-300">Get random Job</button>
+
+    <div id="jobDiv"></div>
+</div>
+
+
+<script>
+    const randomBt = document.querySelector('#randomBt')
+    randomBt.addEventListener('click', () => {
+        fetch('OpenJsonData.json')
+            .then(response => response.json())
+            .then(data => document.querySelector('#jobDiv').innerHTML = JSON.stringify(data))
+    })
+
+</script>
+
+
+</body>
+</html>
