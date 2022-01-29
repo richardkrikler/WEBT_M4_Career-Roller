@@ -10,11 +10,13 @@
 
 <div id="outerDiv" class="h-screen flex justify-center items-center flex-col">
     <button type="button" id="randomBt"
-            class="bg-blue-200 rounded-lg p-10 drop-shadow-lg animate-[pulse_2.5s_ease-in-out_infinite] text-4xl my-10 mx-10">
-        <p class="text-gray-800">Get random Career</p>
+            class="bg-blue-200 rounded-lg p-10 drop-shadow-lg text-4xl my-10 mx-10
+            shadow-sm hover:scale-110 ease-in duration-200">
+        <div class="text-gray-800">Get random Career</div>
     </button>
 
-    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-8/12 w-11/12 m-5 my-10 p-10">
+    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-8/12 w-11/12 m-5 my-10 p-10
+            shadow-sm hover:scale-105 ease-in duration-200">
         <h1 id="careerTitle" class="text-5xl font-bold mb-8">Titel</h1>
 
         <div class="text-2xl">
@@ -49,8 +51,6 @@
     const randomBt = document.querySelector('#randomBt')
     const careerDiv = document.querySelector('#careerDiv')
 
-    // 239049
-
     randomBt.addEventListener('click', () => {
         loadingOverlay.classList.remove('invisible')
         outerDiv.classList.add('invisible')
@@ -81,6 +81,13 @@
 <style>
     .invisible {
         display: none;
+    }
+
+    #randomBt:hover,
+    #careerDiv:hover {
+        -webkit-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
+        -moz-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
+        transition: all 0.4s ease-in-out 0s;
     }
 </style>
 
