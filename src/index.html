@@ -12,10 +12,11 @@
     <button type="button" id="randomBt"
             class="bg-blue-200 rounded-lg p-10 drop-shadow-lg text-4xl my-10 mx-10
             shadow-sm hover:scale-110 ease-in duration-200">
+        <div class="text-gray-800">Click!</div>
         <div class="text-gray-800">Get random Career</div>
     </button>
 
-    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-8/12 w-11/12 m-5 my-10 p-10
+    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
             shadow-sm hover:scale-105 ease-in duration-200">
         <h1 id="careerTitle" class="text-5xl font-bold mb-8">Titel</h1>
 
@@ -26,6 +27,7 @@
 
         <div class="text-2xl">
             Location:
+            <!-- id to put description for location-row -->
             <span id="careerLocation" class="font-bold"></span>
         </div>
 
@@ -33,6 +35,13 @@
             <p class="text-2xl mb-3">Description:</p>
             <p id="careerDescription"></p>
         </div>
+    </div>
+
+    <div class="bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
+            shadow-sm hover:scale-105 ease-in duration-200">
+        <span class="text-center text-2xl">
+            By clicking this button, you will get a possible career path. If you don't like it, you can click on it more often. Good luck!
+        </span>
     </div>
 </div>
 
@@ -46,35 +55,50 @@
 </div>
 
 <script>
+
+    // call getRandomCareer when pressing 'Spacebar'
+    window.addEventListener("keyup", (event) => {
+        if (event.keyCode === 32) {
+            event.preventDefault();
+            getRandomCareer()
+        }
+    })
+
     const outerDiv = document.querySelector('#outerDiv')
     const loadingOverlay = document.querySelector('#loadingOverlay')
     const randomBt = document.querySelector('#randomBt')
     const careerDiv = document.querySelector('#careerDiv')
 
-    randomBt.addEventListener('click', () => {
+    randomBt.addEventListener('click', getRandomCareer)
+
+
+    // request random career from json -> display on page
+    function getRandomCareer() {
+        // display loading screen
         loadingOverlay.classList.remove('invisible')
         outerDiv.classList.add('invisible')
 
         fetch('../OpenJsonData.json')
             .then(response => response.json())
-            // .then(data => data[data.findIndex(e => e['CourseId'] === 239049)])
+            // get random career from career array
             .then(data => data[Math.floor(Math.random() * data.length)])
             .then(career => {
-                console.log(career)
-
                 careerDiv.querySelector('#careerTitle').innerHTML = career['Titel']
                 careerDiv.querySelector('#careerCourseId').innerHTML = career['CourseId']
                 careerDiv.querySelector('#careerLocation').innerHTML = career['Province']
                 careerDiv.querySelector('#careerDescription').innerHTML = career['Description']
 
+                // remove vertical centering
                 outerDiv.classList.remove('h-screen')
-                careerDiv.classList.remove('invisible')
-                randomBt.classList.remove('animate-[pulse_2.5s_ease-in-out_infinite]')
 
+                // display careerDiv
+                careerDiv.classList.remove('invisible')
+
+                // remove loading screen
                 loadingOverlay.classList.add('invisible')
                 outerDiv.classList.remove('invisible')
             })
-    })
+    }
 
 </script>
 
@@ -83,6 +107,7 @@
         display: none;
     }
 
+    /* display shadow on hover with transition */
     #randomBt:hover,
     #careerDiv:hover {
         -webkit-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
