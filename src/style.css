@@ -1,0 +1,9 @@
+#outerDiv, #loadingOverlay svg {
+  color: #1e3a8a;
+}
+
+#outerDiv #randomBt, #outerDiv #careerDiv, #outerDiv #explanationDiv, #outerDiv #loadingOverlay, #outerDiv #innerDiv {
+  background-color: #bfdbfe;
+}
+
+/*# sourceMappingURL=style.css.map */

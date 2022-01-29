@@ -5,19 +5,20 @@
     <title>Career-Roller</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/dist/output.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 
 <div id="outerDiv" class="h-screen flex justify-center items-center flex-col">
     <button type="button" id="randomBt"
-            class="font-bold bg-blue-200 rounded-lg p-10 drop-shadow-lg text-4xl my-10 mx-10
+            class="font-bold rounded-lg p-10 drop-shadow-lg text-4xl my-10 mx-10
             shadow-sm hover:scale-110 ease-in duration-200">
-        <div class="text-gray-800">Click!</div>
-        <div class="text-gray-800">Get random Career</div>
+        <div class="text-blue-900">Click!</div>
+        <div class="text-blue-900">Get random Career</div>
     </button>
 
     <div id="careerDiv"
-         class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 mb-20 p-10 shadow-sm">
+         class="invisible rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 mb-20 p-10 shadow-sm">
         <h1 id="careerTitle" class="text-5xl font-bold mb-8">Titel</h1>
 
         <div class="text-2xl">
@@ -36,7 +37,7 @@
         </div>
     </div>
 
-    <div id="explanationDiv" class="bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
+    <div id="explanationDiv" class="rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
             shadow-sm text-center">
         <span class="text-2xl">
             By clicking this button, you will get a possible career path. If you don't like it, you can click on it more often. Good luck!
@@ -45,7 +46,7 @@
 </div>
 
 <div id="loadingOverlay" class="invisible h-screen flex justify-center items-center flex-col bg-blue-200 opacity-50">
-    <svg class="animate-spin -ml-1 mr-3 h-20 w-20 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+    <svg class="animate-spin -ml-1 mr-3 h-20 w-20" xmlns="http://www.w3.org/2000/svg" fill="none"
          viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor"

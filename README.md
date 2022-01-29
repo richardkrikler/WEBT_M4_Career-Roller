@@ -11,3 +11,8 @@ The innovaitve web technology enables a request to be sent to the server at any 
 ```
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
 ```
+
+## SASS Compile
+```
+npx sass ./src/style.sass ./src/style.css
+```
