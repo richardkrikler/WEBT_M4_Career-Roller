@@ -3,27 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Career-Roller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/dist/output.css" rel="stylesheet">
 </head>
 <body>
 
-<div>
-    <button type="button" id="randomBt" class="bg-amber-300">Get random Job</button>
+<div id="outerDiv" class="h-screen flex justify-center items-center flex-col">
+    <button type="button" id="randomBt"
+            class="bg-blue-200 rounded-lg p-10 drop-shadow-lg animate-[pulse_2.5s_ease-in-out_infinite] text-4xl my-10 mx-10">
+        <p class="text-gray-800">Get random Career</p>
+    </button>
 
-    <div id="jobDiv"></div>
+    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-8/12 w-11/12 m-5 my-10 p-10">
+        <h1 id="careerTitle" class="text-5xl font-bold mb-8">Titel</h1>
+
+        <div class="text-2xl">
+            Kurs-Id:
+            <span id="careerCourseId" class="font-bold"></span>
+        </div>
+
+        <div class="text-2xl">
+            Ort:
+            <span id="careerLocation" class="font-bold"></span>
+        </div>
+
+        <div class="mt-5">
+            <p id="careerDescription"></p>
+        </div>
+    </div>
 </div>
 
+<div id="loadingOverlay" class="invisible h-screen flex justify-center items-center flex-col bg-gray-300 opacity-50">
+    <svg class="animate-spin -ml-1 mr-3 h-20 w-20 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+         viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+</div>
 
 <script>
+    const outerDiv = document.querySelector('#outerDiv')
+    const loadingOverlay = document.querySelector('#loadingOverlay')
     const randomBt = document.querySelector('#randomBt')
+    const careerDiv = document.querySelector('#careerDiv')
+
+    // 239049
+
     randomBt.addEventListener('click', () => {
-        fetch('OpenJsonData.json')
+        loadingOverlay.classList.remove('invisible')
+        outerDiv.classList.add('invisible')
+
+        fetch('../OpenJsonData.json')
             .then(response => response.json())
-            .then(data => document.querySelector('#jobDiv').innerHTML = JSON.stringify(data))
+            .then(data => data[data.findIndex(e => e['CourseId'] === 239049)])
+            // .then(data => data[Math.floor(Math.random() * data.length)])
+            .then(career => {
+                console.log(career)
+
+                careerDiv.querySelector('#careerTitle').innerHTML = career['Titel']
+                careerDiv.querySelector('#careerCourseId').innerHTML = career['CourseId']
+                careerDiv.querySelector('#careerLocation').innerHTML = career['Province']
+                careerDiv.querySelector('#careerDescription').innerHTML = career['Description']
+
+                outerDiv.classList.remove('h-screen')
+                careerDiv.classList.remove('invisible')
+                randomBt.classList.remove('animate-[pulse_2.5s_ease-in-out_infinite]')
+
+                loadingOverlay.classList.add('invisible')
+                outerDiv.classList.remove('invisible')
+            })
     })
 
 </script>
 
+<style>
+    .invisible {
+        display: none;
+    }
+</style>
 
 </body>
 </html>
