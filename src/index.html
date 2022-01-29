@@ -10,7 +10,7 @@
 
 <div id="outerDiv" class="h-screen flex justify-center items-center flex-col">
     <button type="button" id="randomBt"
-            class="bg-blue-200 rounded-lg p-10 drop-shadow-lg text-4xl my-10 mx-10
+            class="font-bold bg-blue-200 rounded-lg p-10 drop-shadow-lg text-4xl my-10 mx-10
             shadow-sm hover:scale-110 ease-in duration-200">
         <div class="text-gray-800">Click!</div>
         <div class="text-gray-800">Get random Career</div>
@@ -27,7 +27,6 @@
 
         <div class="text-2xl">
             Location:
-            <!-- id to put description for location-row -->
             <span id="careerLocation" class="font-bold"></span>
         </div>
 
@@ -118,6 +117,10 @@
         -webkit-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
         -moz-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
         transition: all 0.4s ease-in-out 0s;
+    }
+
+    #careerTitle {
+        overflow-wrap: anywhere;
     }
 </style>
 
