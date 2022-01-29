@@ -6,3 +6,8 @@ the website provides the website provides you with a job oppurtunitiy from Wifi.
 
 AJAX is an approach that can be used to implement this aysnchronous data transfer betweeen server and client.
 The innovaitve web technology enables a request to be sent to the server at any time through the use of JavaScript.
+
+## Tailwind - CSS Framework
+```
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+```

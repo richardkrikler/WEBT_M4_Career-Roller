@@ -16,7 +16,7 @@
         <div class="text-gray-800">Get random Career</div>
     </button>
 
-    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
+    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 mb-20 p-10
             shadow-sm hover:scale-105 ease-in duration-200">
         <h1 id="careerTitle" class="text-5xl font-bold mb-8">Titel</h1>
 
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div class="bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
+    <div id="explanationDiv" class="bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
             shadow-sm hover:scale-105 ease-in duration-200">
         <span class="text-center text-2xl">
             By clicking this button, you will get a possible career path. If you don't like it, you can click on it more often. Good luck!
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div id="loadingOverlay" class="invisible h-screen flex justify-center items-center flex-col bg-gray-300 opacity-50">
+<div id="loadingOverlay" class="invisible h-screen flex justify-center items-center flex-col bg-blue-200 opacity-50">
     <svg class="animate-spin -ml-1 mr-3 h-20 w-20 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
          viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -68,6 +68,7 @@
     const loadingOverlay = document.querySelector('#loadingOverlay')
     const randomBt = document.querySelector('#randomBt')
     const careerDiv = document.querySelector('#careerDiv')
+    const explanationDiv = document.querySelector('#explanationDiv')
 
     randomBt.addEventListener('click', getRandomCareer)
 
@@ -87,6 +88,10 @@
                 careerDiv.querySelector('#careerCourseId').innerHTML = career['CourseId']
                 careerDiv.querySelector('#careerLocation').innerHTML = career['Province']
                 careerDiv.querySelector('#careerDescription').innerHTML = career['Description']
+
+                //
+                explanationDiv.classList.add('invisible')
+
 
                 // remove vertical centering
                 outerDiv.classList.remove('h-screen')
