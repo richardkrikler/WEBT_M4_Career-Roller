@@ -16,8 +16,8 @@
         <div class="text-gray-800">Get random Career</div>
     </button>
 
-    <div id="careerDiv" class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 mb-20 p-10
-            shadow-sm hover:scale-105 ease-in duration-200">
+    <div id="careerDiv"
+         class="invisible bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 mb-20 p-10 shadow-sm">
         <h1 id="careerTitle" class="text-5xl font-bold mb-8">Titel</h1>
 
         <div class="text-2xl">
@@ -37,8 +37,8 @@
     </div>
 
     <div id="explanationDiv" class="bg-blue-200 rounded-lg drop-shadow-lg sm:w-2/3 w-11/12 m-5 my-10 p-10
-            shadow-sm hover:scale-105 ease-in duration-200">
-        <span class="text-center text-2xl">
+            shadow-sm text-center">
+        <span class="text-2xl">
             By clicking this button, you will get a possible career path. If you don't like it, you can click on it more often. Good luck!
         </span>
     </div>
@@ -112,8 +112,7 @@
     }
 
     /* display shadow on hover with transition */
-    #randomBt:hover,
-    #careerDiv:hover {
+    #randomBt:hover {
         -webkit-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
         -moz-box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.45);
         transition: all 0.4s ease-in-out 0s;
